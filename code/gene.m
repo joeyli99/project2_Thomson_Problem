@@ -2,11 +2,11 @@ clc;
 clear;
 N = 30;
 ensemble_size = 100;
-max_generation = 10000;
+max_generation = 100000;
 mutation = 10;
 
 map_ensemble = zeros(N, 2, ensemble_size);
-for i = 1:100
+for i = 1:ensemble_size
   map_ensemble(:, :, i) = rand_map(N);
 end
 generation = 0;
