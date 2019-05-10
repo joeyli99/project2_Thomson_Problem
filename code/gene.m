@@ -1,15 +1,14 @@
 clc;
 clear;
 N = 30;
-ensemble_size = 1000;
+ensemble_size = 100;
 max_generation = 10000;
-mutation = 100;
+mutation = 10;
 
 map_ensemble = zeros(N, 2, ensemble_size);
 for i = 1:100
-  map_ensemble(:,:, i) = rand_map(N);
+  map_ensemble(:, :, i) = rand_map(N);
 end
-
 generation = 0;
 while (generation < max_generation)
   energy_ensem = zeros(ensemble_size, 1);
@@ -22,7 +21,7 @@ while (generation < max_generation)
   next_generation(:, :, 1:5) = map_ensemble(:, :, index(1:5));%继承最好的5个个体
   index(end-4 : end) = [];%淘汰最差的5个个体。
   s(end-4 : end)= [];
-  s = exp(-s)/(1+exp(-s));%玄学函数，用于对能量进行排列，把小的变大，大的变小，可能还可以优化
+  s = exp(-s)/(1+exp(-s));%它到底做了什么？？？？？？？？？？？？？为什么它是对的？？？？？？？
   s = s/sum(s);
   for i = 1:(ensemble_size-5)
     f_prob = rand();
@@ -49,7 +48,7 @@ while (generation < max_generation)
   end
   for i = 1:mutation
     choose = randi(ensemble_size-5)+5; %突变率个体，最好的五个保护不突变。
-    site = randi(30);
+    site = randi(N);
     next_generation(site, :, choose) = next_generation(site, :, choose)+ (rand(1, 2)-0.5)*pi/3;
   end
   map_ensemble = next_generation; %一代遗传结束
