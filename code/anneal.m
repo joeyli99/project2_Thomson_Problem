@@ -7,7 +7,6 @@ map_try = zeros(N, 2);
 energy_now = energy(map(:, 1), map(:, 2));
 for t = 500:-1:1
   for epochs = 1:1000
-    counter = 0;
     map_try(2:N, :) = map(2:N, :)+(rand(N-1, 2)-0.5)*pi/3;
     energy_try = energy(map_try(:, 1), map_try(:, 2));
     if (energy_try < energy_now)
