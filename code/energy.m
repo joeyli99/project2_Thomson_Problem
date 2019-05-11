@@ -8,7 +8,7 @@ function total = energy(theta , phi)
     the_other(i) = [];
     phi_other = phi;
     phi_other(i) = [];
-    total = total + sum(-log( distance(the_self, phi_self, the_other, phi_other) ));
+    total = total + sum(-log(distance(the_self, phi_self, the_other, phi_other)) );
   end
   total = total / 2;
 end
