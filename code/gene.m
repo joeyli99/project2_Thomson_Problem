@@ -1,6 +1,6 @@
 clc;
 clear;
-N = 30; %number of charges.
+N = 3; %number of charges.
 ensemble_size = 100; %The members in population.
 max_generation = 10000; %The max generation
 mutation = 15; %mutation members.
