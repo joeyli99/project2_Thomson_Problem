@@ -20,18 +20,18 @@ while (generation < max_generation)
   disp([num2str(s(1)),' ', num2str(generation)])
   next_generation = zeros(N, 2, ensemble_size);
   next_generation(:, :, 1:5) = map_ensemble(:, :, index(1:5)); %The best 5 join to the next generation a superparameter
-  index(end-4 : end) = []; %The worst 5 die.
-  s(end-4 : end)= [];
+  %index(end-4 : end) = []; %The worst 5 die.
+  %s(end-4 : end)= [];
   
   s = exp(-s)/(1+exp(-s)); %An active function which is obtained by incident.
   s = s/sum(s); % we try to interpret the energy into the probability.
-  for i = 1:(ensemble_size-5)
+  for i = 1:ensemble_size
     f_prob = rand();
     m_prob = rand();
     prob_sum = 0;
     father = 0;
     mother = 0;
-    for j = 1:(ensemble_size-5)
+    for j = 1:ensemble_size
       prob_sum = prob_sum+s(j); %The Roulette method.
       if (prob_sum>f_prob)
         father = j;
@@ -39,7 +39,7 @@ while (generation < max_generation)
       end
     end
     prob_sum = 0;
-    for j = 1:(ensemble_size-5)
+    for j = 1:ensemble_size
       prob_sum = prob_sum+s(j);
       if (prob_sum>m_prob)
         mother = j;
