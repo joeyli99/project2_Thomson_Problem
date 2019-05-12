@@ -10,7 +10,7 @@ for i=1:29
     phi(:,i)=A(:,2*i);
 end
 
-N=30;             %输出电荷数为N下的configuration
+N=29;             %输出电荷数为N下的configuration
 the1=theta(:,N-1);
 the2=the1(1:N);
 phi1=phi(:,N-1);
@@ -36,5 +36,7 @@ set(gca,'ZLim',[-100 100])
 axis equal
 alpha(0.4)
 hold on 
-scatter3(x0,y0,z0,s,'filled')
+h=scatter3(x0,y0,z0,20*ones(N,1),'filled');
 view(45,30)
+name=num2str(N);
+saveas(h,name,'png')
